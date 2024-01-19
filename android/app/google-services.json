@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "814990967876",
+    "project_id": "smart-identificator",
+    "storage_bucket": "smart-identificator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814990967876:android:4eb2d8d0ad156ddd47e811",
+        "android_client_info": {
+          "package_name": "com.example.smart_identificator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw7qinzWizUgtdXihgsUlHipMG71EeIr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
