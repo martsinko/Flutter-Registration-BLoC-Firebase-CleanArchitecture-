@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/config/app_config.dart';
+import '../../../../core/config/components/app_config.dart';
 
 class RegisterButton extends StatelessWidget {
   const RegisterButton({
@@ -17,7 +17,9 @@ class RegisterButton extends StatelessWidget {
     return SizedBox(
      width: screenWidth * 0.80,
      height: screenHeight / 14,
-     child: TextButton(onPressed: (){}, style: ElevatedButton.styleFrom(
+     child: TextButton(onPressed: (){
+      Navigator.pushReplacementNamed(context, '/sign_up_page');
+     }, style: ElevatedButton.styleFrom(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30)
       )

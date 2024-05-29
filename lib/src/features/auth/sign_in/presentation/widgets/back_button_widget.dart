@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/config/app_config.dart';
+import '../../../../../core/config/components/app_config.dart';
 
 class ButtonBack extends StatelessWidget {
   const ButtonBack({

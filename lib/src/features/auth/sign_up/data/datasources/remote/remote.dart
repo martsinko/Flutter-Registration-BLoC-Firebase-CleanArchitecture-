@@ -15,10 +15,6 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   @override
   Future<UserModel> registerUser(String email, String password) async {
     try {
-      if (email.isEmpty || password.isEmpty) {
-        throw Exception("Електронна пошта та пароль не можуть бути порожніми");
-      }
-
       UserCredential newUser = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
@@ -36,13 +32,3 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
     }
   }
 }
-
-
-/*catch (e) {
-      if (e is FirebaseAuthException) {
-     print('FirebaseAuthException: ${e.code}, ${e.message}');
-   } else {
-     print('Не вдалося зареєструвати користувача: $e');
-   }
-   throw Exception("Не вдалося зареєструвати користувача");
-    }*/

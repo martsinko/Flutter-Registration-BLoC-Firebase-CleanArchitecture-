@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/config/app_config.dart';
+import '../../../../core/config/components/app_config.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ImageSizedBox extends StatelessWidget {

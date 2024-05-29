@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">smart_identificator</string>
+    <string name="facebook_app_id">7660359637363052</string>
+    <string name="fb_login_protocol_scheme">fb7660359637363052</string>
+</resources>

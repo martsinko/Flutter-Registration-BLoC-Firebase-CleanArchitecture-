@@ -7,7 +7,6 @@ abstract class SignUpEvent extends Equatable {
   List<Object> get props => [];
 }
 
-
  class SignUpButtonPressed extends SignUpEvent{
   final String email;
  final String password;

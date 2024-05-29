@@ -1,42 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../../core/config/app_config.dart';
 import '../pages/sign_up_page.dart';
 
-// ignore: must_be_immutable
-class PasswordTextField extends StatelessWidget {
- PasswordTextField({
-    super.key,
-    required this.screenHeight,
-    required this.screenWidth,
-    required this.passwordFieldKey
-  });
-
+class PasswordTextField extends StatefulWidget {
   final double screenHeight;
   final double screenWidth;
-  final passwordFieldKey;
 
-TextEditingController passwordController = TextEditingController();
+  PasswordTextField({
+    Key? key,
+    required this.screenHeight,
+    required this.screenWidth,
+  }) : super(key: key);
 
+  @override
+  _PasswordTextFieldState createState() => _PasswordTextFieldState();
+}
 
+class _PasswordTextFieldState extends State<PasswordTextField> {
 
+  bool passToogle = true;
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-       height: screenHeight / 14,
-       width: screenWidth * 0.9,
-       child: TextField(
-        key:  passwordFieldKey,
-        onChanged: (text){SignUpPage.password = text;},
+      width: widget.screenWidth * 0.9,
+      child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "Пароль не може бути порожнім";
+          }
+          if (value.length < 6) {
+            return "Пароль повинен містити принаймні 6 символів";
+          }
+          if (!RegExp(r'^(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$')
+              .hasMatch(value)) {
+            return "Пароль повинен містити принаймні одну цифру та \nодин спеціальний символ";
+          }
+          return null;
+        },
+        onChanged: (password) {
+          SignUpPage.password = password;
+        },
         controller: passwordController,
-         decoration: InputDecoration(
-           hintText: password,
-           hintStyle: GoogleFonts.montserrat(fontWeight: FontWeight.w400),
-           border: OutlineInputBorder(
-             borderRadius: BorderRadius.circular(8)
-           )
-         ),
-       ));
+        obscureText: passToogle,
+        decoration: InputDecoration(
+          suffixIcon: IconButton(onPressed: (){
+              setState(() {
+                 passToogle = !passToogle;
+              });
+          }, icon: Icon(passToogle ? Icons.visibility : Icons.visibility_off)
+          ),
+        
+          errorStyle: TextStyle(color: Colors.red, fontSize: 13.0),
+          contentPadding: const EdgeInsets.all(15),
+          hintText: 'Пароль',
+          hintStyle: GoogleFonts.montserrat(fontWeight: FontWeight.w400),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ),
+    );
   }
 }

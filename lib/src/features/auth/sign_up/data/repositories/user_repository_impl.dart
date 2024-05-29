@@ -1,3 +1,4 @@
+
 import 'package:dartz/dartz.dart';
 import '../../../../../core/errors/failures.dart';
 import '../../domain/entities/user.dart';
@@ -26,4 +27,5 @@ class UserRepositoryImpl implements UserRepository {
       throw Exception("Failed to register user");
     }
   }
+
 }

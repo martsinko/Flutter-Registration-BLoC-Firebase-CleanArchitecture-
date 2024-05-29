@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../core/config/app_config.dart';
+import '../../../../../core/config/components/app_config.dart';
 class SignInTitle extends StatelessWidget {
   const SignInTitle({
     super.key,

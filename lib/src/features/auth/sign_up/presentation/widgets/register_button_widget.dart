@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_identificator/src/features/auth/sign_up/presentation/bloc/sign_up_bloc.dart';
 import 'package:smart_identificator/src/features/auth/sign_up/presentation/pages/sign_up_page.dart';
-import '../../../../../core/config/app_config.dart';
+import '../../../../../core/config/components/app_config.dart';
 
 // ignore: must_be_immutable
 class RegisterButton extends StatelessWidget {
   RegisterButton({
+    
     super.key,
-
+    required this.formKey,
     required this.screenWidth,
     required this.screenHeight,
     required this.emailController,
@@ -20,6 +21,7 @@ class RegisterButton extends StatelessWidget {
   final TextEditingController passwordController;
   final double screenWidth;
   final double screenHeight;
+   final GlobalKey<FormState> formKey;
 
 
 
@@ -29,12 +31,20 @@ class RegisterButton extends StatelessWidget {
       width: screenWidth * 0.90,
       height: screenHeight / 14,
       child: TextButton(
-        onPressed: () {  
-          emailController.clear();
-          passwordController.clear();
-          BlocProvider.of<SignUpBloc>(context).add(SignUpButtonPressed(
+        onPressed: () {
+
+
+          if(formKey.currentState!.validate())  {
+            BlocProvider.of<SignUpBloc>(context).add(SignUpButtonPressed(
             email: SignUpPage.email, 
             password: SignUpPage.password));
+             
+             Text('Зареєстровано');
+          }
+        
+          emailController.clear();
+          passwordController.clear();
+          
           print('Значення передані: ${SignUpPage.email}');
         },
         style: TextButton.styleFrom(
